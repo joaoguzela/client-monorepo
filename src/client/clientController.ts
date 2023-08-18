@@ -17,7 +17,7 @@ export default class ClientController {
       cpf,
       color,
     });
-    return response.status(201).json(customer);
+    return response.status(HttpStatusCode.CREATED).json(customer);
   }
 
   public async show(
@@ -25,22 +25,9 @@ export default class ClientController {
     response: Response,
     next: NextFunction,
   ): Promise<Response> {
-    try {
-      const clientService = new ClientService();
-      const { id } = request.params;
-      const customer = await clientService.show(id);
-      return response.json(customer);
-    } catch (error) {
-      if (error instanceof AppError) {
-        return response.status(error.statusCode).json(error);
-      } else if (error instanceof Error) {
-        return response.status(HttpStatusCode.INTERNAL_SERVER_ERROR).json({
-          description: error.message,
-          status: HttpStatusCode.INTERNAL_SERVER_ERROR,
-        });
-      } else {
-        return response.end(error);
-      }
-    }
+    const clientService = new ClientService();
+    const { id } = request.params;
+    const customer = await clientService.show(id);
+    return response.status(HttpStatusCode.OK).json(customer);
   }
 }

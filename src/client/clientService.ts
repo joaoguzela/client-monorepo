@@ -1,5 +1,5 @@
 import AppError from '../errors/AppError';
-import { ClientType } from './typeClient/clientType';
+import { ClientType } from './type/clientType';
 import ClientRepository from './typeorm/repositories/clientRepository';
 import { getCustomRepository } from 'typeorm';
 
@@ -9,7 +9,7 @@ export default class ClientService {
     email,
     cpf,
     color,
-  }: ClientType): Promise<ClientType | undefined> {
+  }: ClientType): Promise<ClientType> {
     const clientRepository = getCustomRepository(ClientRepository);
 
     const emailExist = await clientRepository.findByEmail(email);
@@ -25,15 +25,15 @@ export default class ClientService {
 
     await clientRepository.save(client);
 
-    return client;
+    return client as ClientType;
   }
-  public async show(id: string): Promise<ClientType | undefined> {
+  public async show(id: string): Promise<ClientType> {
     const clientRepository = getCustomRepository(ClientRepository);
 
     const client = await clientRepository.findById(id);
 
     if (!client) throw new AppError('User not found.');
 
-    return client;
+    return client as ClientType;
   }
 }
