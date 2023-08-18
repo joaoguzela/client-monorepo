@@ -1,7 +1,7 @@
 import { Router } from 'express';
 import { celebrate, Joi, Segments } from 'celebrate';
 import ClientController from './clientController';
-import { isAuthenticated } from '../middlewar/authenticationMiddleware';
+import { isAuthenticated } from '../middleware/authenticationMiddleware';
 
 const clientRouter = Router();
 

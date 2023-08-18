@@ -5,7 +5,7 @@ import cors from 'cors';
 import { errors } from 'celebrate';
 import routes from './server.routes';
 import { NODE_PORT } from './config/config';
-import { constructError } from './middleware/middleware';
+import { constructError } from './middleware/errorMiddleware';
 import './typeorm';
 
 const app = express();

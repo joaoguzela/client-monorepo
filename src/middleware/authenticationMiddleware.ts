@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from 'express';
-import AppError from 'src/errors/AppError';
+import AppError from '../errors/AppError';
 import { HttpStatusCode } from '../config/httpStatus';
 import { AUTHENTICATION_TOKEN } from '../config/config';
 
