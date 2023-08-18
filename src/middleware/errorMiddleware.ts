@@ -19,7 +19,7 @@ export const constructError = (
       message: error.message,
     });
   } else {
-    response.json({
+    response.status(HttpStatusCode.INTERNAL_SERVER_ERROR).json({
       type: 'Error',
       message: 'Internal server error',
     });
