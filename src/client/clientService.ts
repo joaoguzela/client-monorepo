@@ -9,7 +9,7 @@ export default class ClientService {
     email,
     cpf,
     color,
-  }: ClientType): Promise<ClientType> {
+  }: ClientType): Promise<ClientType | undefined> {
     const clientRepository = getCustomRepository(ClientRepository);
 
     const emailExist = await clientRepository.findByEmail(email);
@@ -20,22 +20,20 @@ export default class ClientService {
       cpf,
       color,
     });
-    console.log(await clientRepository.find());
+
     if (!client) throw new AppError('Error Create to user', 403);
+
     await clientRepository.save(client);
+
     return client;
   }
-  public async show(id: string): Promise<ClientType> {
-    try {
-      const clientRepository = getCustomRepository(ClientRepository);
+  public async show(id: string): Promise<ClientType | undefined> {
+    const clientRepository = getCustomRepository(ClientRepository);
 
-      const client = await clientRepository.findById(id);
+    const client = await clientRepository.findById(id);
 
-      if (!client) throw new AppError('User not found.');
+    if (!client) throw new AppError('User not found.');
 
-      return client;
-    } catch (err) {
-      throw new AppError(JSON.stringify(err));
-    }
+    return client;
   }
 }

@@ -4,28 +4,16 @@ import 'express-async-errors';
 import cors from 'cors';
 import { errors } from 'celebrate';
 import routes from './server.routes';
-import AppError from './errors/AppError';
+import { NODE_PORT } from './config/config';
+import { constructError } from './middleware/middleware';
 import './typeorm';
 
 const app = express();
-
 app.use(cors());
 app.use(express.json());
-
 app.use(routes);
 app.use(errors());
-app.use((error: Error, request: Request, response: Response) => {
-  if (error instanceof AppError) {
-    return response.status(error.statusCode).json({
-      status: 'error',
-      message: error.message,
-    });
-  }
-  return response.status(500).json({
-    status: 'error',
-    message: 'Internal sever error',
-  });
-});
-app.listen(3333, () => {
-  console.log('server route 3333');
+app.use(constructError);
+app.listen(NODE_PORT, () => {
+  console.log(`server route ${NODE_PORT}`);
 });
