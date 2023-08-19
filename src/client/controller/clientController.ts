@@ -1,7 +1,7 @@
 import { NextFunction, Request, Response } from 'express';
-import ClientService from './clientService';
-import AppError from '../errors/AppError';
-import { HttpStatusCode } from '../config/httpStatus';
+import ClientService from '../service/clientService';
+import { HttpStatusCode } from '../../config/httpStatus';
+import ClientRepository from '../typeorm/repositories/clientRepository';
 
 export default class ClientController {
   public async create(
@@ -9,7 +9,8 @@ export default class ClientController {
     response: Response,
     next: NextFunction,
   ): Promise<Response | undefined> {
-    const clientService = new ClientService();
+    const clientService = new ClientService(new ClientRepository());
+
     const { name, email, cpf, color } = request.body;
     const customer = await clientService.create({
       name,
@@ -25,7 +26,8 @@ export default class ClientController {
     response: Response,
     next: NextFunction,
   ): Promise<Response> {
-    const clientService = new ClientService();
+    const clientService = new ClientService(new ClientRepository());
+
     const { id } = request.params;
     const customer = await clientService.show(id);
     return response.status(HttpStatusCode.OK).json(customer);
