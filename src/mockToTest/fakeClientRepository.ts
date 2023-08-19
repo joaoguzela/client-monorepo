@@ -1,7 +1,7 @@
 import { v4 as uuidv4 } from 'uuid';
 import { ClientType } from '../client/types/clientType';
 import Client from '../client/typeorm/entities/client';
-import IClientRepository from 'src/interfaces/IClientRepository';
+import IClientRepository from '../client/interfaces/IClientRepository';
 class FakeClientRepository implements IClientRepository {
   constructor(private clients: Client[] = []) {}
   public async create({

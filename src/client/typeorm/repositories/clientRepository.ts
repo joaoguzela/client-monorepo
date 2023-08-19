@@ -1,6 +1,6 @@
 import { getRepository, Repository } from 'typeorm';
 import Client from '../entities/client';
-import IClientRepository from '../../../interfaces/IClientRepository';
+import IClientRepository from '../../interfaces/IClientRepository';
 import { ClientType } from '../../types/clientType';
 
 export default class ClientRepository implements IClientRepository {

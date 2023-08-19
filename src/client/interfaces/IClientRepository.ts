@@ -1,5 +1,5 @@
 import { ClientType } from 'src/client/types/clientType';
-import Client from '../client/typeorm/entities/client';
+import Client from '../typeorm/entities/client';
 
 export default interface IClientRepository {
   create(client: ClientType): Promise<Client | undefined>;

@@ -1,6 +1,6 @@
 import AppError from '../../errors/AppError';
 import { ClientType } from '../types/clientType';
-import IClientRepository from 'src/interfaces/IClientRepository';
+import IClientRepository from '../interfaces/IClientRepository';
 
 export default class ClientService {
   constructor(private clientRepository: IClientRepository) {}
