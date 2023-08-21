@@ -1,32 +1,34 @@
 import styled from 'styled-components';
 
 export const HomeContainer = styled.main`
-  flex: 1;
   display: flex;
-  align-items: left;
+  gap: 3rem;
+  margin-top: 3rem;
+`;
+export const FormContainer = styled.div`
+  display: flex;
   flex-direction: column;
-  justify-content: center;
-  gap: 3.5rem;
-  form {
-    display: flex;
-    flex-direction: column;
-    align-items: left;
-    max-width: 20rem;
-    gap: 2rem;
+  gap: 2rem;
+  width: 20rem;
+  flex: 1;
+  margin-top: 2rem;
+
+  input {
+    border-radius: 0.5rem;
+    height: 2.5rem;
   }
   section {
     display: flex;
     flex-direction: column;
     gap: 0.3rem;
   }
-`;
-export const FormContainer = styled.form`
-  input {
-    border-radius: 0.5rem;
-    height: 2.5rem;
+  div {
+    flex: 1;
+    margin-left: 200px;
   }
 `;
 export const ButtonForm = styled.button`
+  margin-top: 1.5rem;
   border-radius: 0.5rem;
   width: 10rem;
   height: 2rem;

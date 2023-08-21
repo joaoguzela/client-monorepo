@@ -15,7 +15,7 @@ body{
   background: ${props => props.theme['blue-eteg']};
 }
 
-body, input, textarea,button{
+body, input, textarea, button, select{
   font-family: 'Roboto', sans-serif;
   font-weight: 400;
   font-size: 1rem;
