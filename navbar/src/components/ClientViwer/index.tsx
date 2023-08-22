@@ -2,10 +2,9 @@ import { HistoryContainer, HistoryList } from './styles';
 import { Client } from '../../@types/Client';
 
 export function ClientTable({ id, name, email, color, cpf }: Client) {
-  // const { id, name, email, color, cpf } = client;
   return (
     <HistoryContainer>
-      <h1>Cliente Registrado</h1>
+      <h1>Registered Customer</h1>
 
       <HistoryList>
         <table>
@@ -23,7 +22,7 @@ export function ClientTable({ id, name, email, color, cpf }: Client) {
               <td>{id}</td>
               <td>{name}</td>
               <td>{email}</td>
-              <td>{color}</td>
+              <td style={{ backgroundColor: color }}>{color}</td>
               <td>{cpf}</td>
             </tr>
           </tbody>

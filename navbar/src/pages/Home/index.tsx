@@ -1,39 +1,32 @@
-import { useForm } from 'react-hook-form';
+import { FieldValues, useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import * as zod from 'zod';
-import React, { useState } from 'react';
-import { Notification, Title, Close } from '@zendeskgarden/react-notifications';
-import { FormContainer, HomeContainer, ButtonForm } from './styles';
+import { useState } from 'react';
+import { FormContainer, HomeContainer, ButtonForm, InputForm } from './styles';
 import { CustomDropdownColor } from '../../components/Dropdown/index';
+import { ClientForm } from '../../@types/ClientForm';
 import { ClientTable } from '../../components/ClientViwer/index';
-import { request } from '../../Request/postUser';
+import { requestClient } from '../../Request/postUser';
 import { Client } from '../../@types/Client';
+import PersonalToast from '../../components/Toast';
+import alert from '../../assets/alert.svg';
+import { newFormValidationSchema } from '../../utils/zodValidation';
 
-const newFormValidationSchema = zod.object({
-  name: zod.string().min(4, 'Informe um nome valido'),
-  email: zod.string().email(),
-  color: zod.string(),
-  cpf: zod.string(),
-});
 export function Home() {
-  const [client, setClient] = useState<Client | null>(null);
-  const [useToasts, setUseToasts] = useState<boolean>(false);
-  const { register, handleSubmit } = useForm({
+  const [client, setClient] = useState<Client | undefined>(undefined);
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm({
     resolver: zodResolver(newFormValidationSchema),
   });
-  async function handleCreateNewClient(data: any) {
-    request(data)
-      .then(response => response.json())
-      .then(result => {
-        if (result.type === 'Application error') {
-          setUseToasts(true);
-        } else {
-          setClient(result);
-        }
-      })
-      .catch(error => console.log('error', error));
-  }
 
+  async function handleCreateNewClient(data: FieldValues) {
+    const clientCreated = await requestClient(data as ClientForm);
+    setClient(clientCreated);
+    reset();
+  }
   return (
     <HomeContainer>
       <div>
@@ -42,22 +35,58 @@ export function Home() {
           <FormContainer>
             <section>
               <label htmlFor="name">Name</label>
-              <input id="name" {...register('name')} />
+              <InputForm
+                id="name"
+                {...register('name')}
+                valuecolor={errors.name?.message ? 'red' : 'black'}
+              />
+              {errors.name?.message ? (
+                <p>
+                  <img src={alert} alt="" /> {errors.name.message.toString()}
+                </p>
+              ) : (
+                <p />
+              )}
             </section>
             <section>
               <label htmlFor="email">Email</label>
-              <input type="email" id="email" {...register('email')} />
+              <InputForm
+                type="email"
+                id="email"
+                {...register('email')}
+                valuecolor={errors.email?.message ? 'red' : 'black'}
+              />
+              {errors.email?.message ? (
+                <p>
+                  <img src={alert} alt="" /> {errors.email.message.toString()}
+                </p>
+              ) : (
+                <p />
+              )}
             </section>
             <CustomDropdownColor id="color" register={register} />
             <section>
               <label htmlFor="cpf">CPF</label>
-              <input id="cpf" {...register('cpf')} />
+              <InputForm
+                id="cpf"
+                {...register('cpf')}
+                valuecolor={errors.cpf?.message ? 'red' : 'black'}
+              />
+              {errors.cpf?.message ? (
+                <p>
+                  {' '}
+                  <img src={alert} alt="" /> {errors.cpf.message.toString()}
+                </p>
+              ) : (
+                <p />
+              )}
             </section>
           </FormContainer>
 
           <ButtonForm type="submit">Submit</ButtonForm>
         </form>
         <div />
+        <PersonalToast />
       </div>
       {client ? <ClientTable {...client} /> : null}
     </HomeContainer>
