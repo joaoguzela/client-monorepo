@@ -52,7 +52,6 @@ services:
     environment:
       HOST_API: http://app:3333/
       TOKEN_API: guzela
-    command: yarn dev
     depends_on:
       - app
     

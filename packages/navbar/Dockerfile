@@ -13,3 +13,5 @@ COPY . .
 ENV HOST_API=$HOST_API
 
 ENV TOKEN_API=$TOKEN_API
+
+CMD ["yarn","dev]
