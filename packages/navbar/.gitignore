@@ -1,0 +1,7 @@
+.vscode/
+node_modules/
+ormconfig.json
+.env
+coverage
+.docker/dbdata
+dist/

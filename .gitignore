@@ -1,0 +1,6 @@
+.vscode/
+packages/navbar/node_modules/
+ormconfig.json
+.env
+coverage
+.docker/dbdata
