@@ -3,7 +3,7 @@
 O intuitu do projeto é subir autmaticamente um ambiente de desenvolvimento
 ## 🚀 Começando
 
-Para desenvolver em localhost precisa apeanas rodar o docker-compose com:
+Para desenvolver em localhost precisa apeanas do comando:
 
 ```bash
 docker-compose up --build
