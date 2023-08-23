@@ -25,11 +25,11 @@ docker e docker-compose
 ## ⚙️ Executando os testes
 
 ```bash
-    cd packages/backend
+cd packages/backend
 ```
 
 ```bash
-   yarn test
+yarn test
 ```
 
 ### 🔩 Analise os testes de ponta a ponta
@@ -44,3 +44,6 @@ Functions    : 66.66% ( 2/3 )
 Lines        : 85.29% ( 29/34 )
 ================================================================================
 ```
+## ⚙️ Coverage
+![image](https://github.com/joaoguzela/client-monorepo/assets/72944999/92b5286e-c6c7-488f-974f-84121df982ad)
+
