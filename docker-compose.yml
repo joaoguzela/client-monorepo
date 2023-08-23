@@ -32,7 +32,7 @@ services:
       - frontend
       - backend
     environment:
-      FRONT_URL: http://localhost:5173
+      - FRONT_URL=http://localhost:5173
 
     depends_on:
       - db
@@ -50,8 +50,8 @@ services:
     networks:
       - frontend
     environment:
-      HOST_API: http://app:3333/
-      TOKEN_API: guzela
+      - HOST_API=http://localhost:3333/clients
+      - TOKEN_API=guzela
     depends_on:
       - app
     
@@ -64,4 +64,3 @@ networks:
 volumes:
   pgdata:
     driver: local
-
