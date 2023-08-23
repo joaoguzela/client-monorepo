@@ -1,6 +1,6 @@
 import { Client } from '../@types/Client';
 import { ClientForm } from '../@types/ClientForm';
-import { HOST_API } from '../config';
+import { HOST_API, TOKEN_API } from '../config';
 import { alertCreate } from '../utils/alert';
 
 export async function requestClient(
@@ -8,7 +8,7 @@ export async function requestClient(
 ): Promise<Client | undefined> {
   const myHeaders = new Headers();
   myHeaders.append('Content-Type', 'application/json');
-  myHeaders.append('Authorization', 'Bearer guzela');
+  myHeaders.append('Authorization', `Bearer ${TOKEN_API}`);
   const requestOptions: RequestInit = {
     method: 'POST',
     headers: myHeaders,
@@ -16,10 +16,7 @@ export async function requestClient(
     redirect: 'follow',
   };
   try {
-    const requestFetch = await fetch(
-      `http://localhost:3333/clients`,
-      requestOptions,
-    );
+    const requestFetch = await fetch(`${HOST_API}`, requestOptions);
     const result = await requestFetch.json();
 
     if (result && result?.type === 'Application error') {

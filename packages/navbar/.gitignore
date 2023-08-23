@@ -5,3 +5,4 @@ ormconfig.json
 coverage
 .docker/dbdata
 dist/
+nginx
