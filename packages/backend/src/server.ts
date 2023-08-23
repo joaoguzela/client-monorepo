@@ -5,19 +5,15 @@ import cors from 'cors';
 import { errors } from 'celebrate';
 import routes from './server.routes';
 import { constructError } from './middleware/constructErrorMiddleware';
-import { FRONT_URL, NODE_PORT } from './config/config';
+import { NODE_PORT } from './config/config';
 import './typeorm';
 
 const app = express();
-const corsOptions = {
-  origin: `${FRONT_URL}`,
-  optionsSuccessStatus: 204,
-};
-app.use(cors(corsOptions));
+app.use(cors());
 app.use(express.json());
 app.use(routes);
 app.use(errors());
 app.use(constructError);
-app.listen(3333, () => {
+app.listen(Number(NODE_PORT), '0.0.0.0', () => {
   console.log(`server route ${NODE_PORT}`);
 });
