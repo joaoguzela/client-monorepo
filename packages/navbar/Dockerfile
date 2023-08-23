@@ -4,7 +4,7 @@ RUN npm install -g npm@9.8.0
 
 WORKDIR /front/build
 
-COPY package.json yarn.lock ./
+COPY package.json ../../
 
 RUN yarn install
 

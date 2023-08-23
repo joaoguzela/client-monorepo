@@ -17,7 +17,7 @@ services:
     networks:
       - backend
   app:
-    build: 
+    build:
       dockerfile: Dockerfile
       context: ./packages/backend
     container_name: apiclient-api
@@ -25,9 +25,6 @@ services:
       - "3333:3333"
     volumes:
       - ./packages/backend:/app/build
-    command: 
-      yarn dev
-      yarn typeorm migration:run 
     networks:
       - frontend
       - backend
@@ -37,7 +34,7 @@ services:
     depends_on:
       - db
   front:
-    build: 
+    build:
       dockerfile: Dockerfile
       context: ./packages/navbar
     links:
@@ -54,12 +51,12 @@ services:
       - TOKEN_API=guzela
     depends_on:
       - app
-    
+
 networks:
   frontend:
-    
+
   backend:
-    
+
 
 volumes:
   pgdata:
