@@ -6,3 +6,4 @@ coverage
 .docker/dbdata
 dist/
 nginx
+build
