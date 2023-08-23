@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import clientRouter from './client/client.route';
+import clientRouter from './models/client/client.route';
 const routes = Router();
 
 routes.use('/clients', clientRouter);

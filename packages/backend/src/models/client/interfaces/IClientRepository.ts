@@ -1,4 +1,4 @@
-import { ClientType } from 'src/client/types/clientType';
+import { ClientType } from '../../client/types/clientType';
 import Client from '../typeorm/entities/client';
 
 export default interface IClientRepository {

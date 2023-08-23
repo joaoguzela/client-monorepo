@@ -1,4 +1,4 @@
-import AppError from '../../errors/AppError';
+import AppError from '../../../errors/AppError';
 import { ClientType } from '../types/clientType';
 import IClientRepository from '../interfaces/IClientRepository';
 

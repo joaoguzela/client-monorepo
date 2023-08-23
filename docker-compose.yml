@@ -28,8 +28,6 @@ services:
     networks:
       - frontend
       - backend
-    environment:
-      - FRONT_URL=http://localhost:5173
 
     depends_on:
       - db
@@ -51,6 +49,19 @@ services:
       - TOKEN_API=guzela
     depends_on:
       - app
+  cors:
+    build:
+      context: ./nginx
+      dockerfile: Dockerfile
+    container_name: cors
+    ports:
+      - "80:80"
+    networks:
+      - frontend
+      - backend
+    depends_on:
+      - app
+      - db
 
 networks:
   frontend:
