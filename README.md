@@ -5,9 +5,8 @@ O intuitu do projeto é subir autmaticamente um ambiente de desenvolvimento
 
 Para desenvolver em localhost precisa apeanas rodar o docker-compose com:
 
-```
+```bash
 docker-compose up --build
-
 ```
 Se preferir as imagens referente a aplicação estão disponíveis em:
 
@@ -20,18 +19,17 @@ Consulte **[Frontend](https://hub.docker.com/r/joaochaves130329/web)**.
 De que coisas você precisa para instalar o software e como instalá-lo?
 
 ```
-docker
-
-docker-compose
+docker e docker-compose
 ```
 
 ## ⚙️ Executando os testes
 
+```bash
+    cd packages/backend
 ```
-   cd packages/backend
 
+```bash
    yarn test
-
 ```
 
 ### 🔩 Analise os testes de ponta a ponta
