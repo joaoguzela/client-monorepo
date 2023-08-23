@@ -1,5 +1,4 @@
 .vscode/
-packages/navbar/node_modules/
 ormconfig.json
 .env
 coverage
@@ -7,3 +6,4 @@ coverage
 nginx
 yarn-error.log
 build
+node_modules/
