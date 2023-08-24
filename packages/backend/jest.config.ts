@@ -3,9 +3,10 @@ import type { Config } from 'jest';
 const config: Config = {
   coverageProvider: 'v8',
   preset: 'ts-jest',
+  modulePaths: ['<rootdir>/src'],
   testMatch: ['**/test/*.spec.ts'],
   testEnvironment: 'node',
-  collectCoverageFrom: ['./src/client/service/*'],
+  collectCoverageFrom: ['./src/modules/client/service/*'],
   coverageReporters: ['text-summary', 'lcov'],
   collectCoverage: true,
   clearMocks: true,
