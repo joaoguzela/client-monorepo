@@ -5,15 +5,17 @@ import cors from 'cors';
 import { errors } from 'celebrate';
 import routes from './server.routes';
 import { constructError } from './middleware/constructErrorMiddleware';
-import { NODE_PORT } from '@config/config';
-import './typeorm';
-
+import { NODE_PORT } from './config/config';
+import {dataSource} from './typeorm';
 const app = express();
 app.use(cors());
 app.use(express.json());
 app.use(routes);
 app.use(errors());
 app.use(constructError);
+dataSource.initialize().then(()=>{
 app.listen(Number(NODE_PORT), '0.0.0.0', () => {
   console.log(`server route ${NODE_PORT}`);
 });
+})
+

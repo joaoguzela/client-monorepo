@@ -9,7 +9,7 @@ class FakeClientRepository implements IClientRepository {
     email,
     cpf,
     color,
-  }: ClientType): Promise<Client | undefined> {
+  }: ClientType): Promise<Client | null> {
     const client = new Client();
     client.id = uuidv4();
     client.name = name;
@@ -29,14 +29,13 @@ class FakeClientRepository implements IClientRepository {
     return client;
   }
 
-  public async findById(id: string): Promise<Client | undefined> {
+  public async findById(id: string): Promise<Client | null> {
     const client = this.clients.find(client => client.id === id);
-    return client;
+    return client ? client : null;
   }
-
-  public async findByEmail(email: string): Promise<Client | undefined> {
+  public async findByEmail(email: string): Promise<Client | null> {
     const client = this.clients.find(client => client.email === email);
-    return client;
+    return client ? client : null;
   }
 }
 

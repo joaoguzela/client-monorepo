@@ -1,14 +1,14 @@
-import { getRepository, Repository } from 'typeorm';
+import { Repository } from 'typeorm';
 import Client from '../entities/client';
 import IClientRepository from '../../interfaces/IClientRepository';
 import { ClientType } from '../../types/clientType';
-
+import { dataSource } from '../../../../typeorm';
 export default class ClientRepository implements IClientRepository {
   public ormRepository: Repository<Client>;
   constructor() {
-    this.ormRepository = getRepository(Client);
+    this.ormRepository = dataSource.getRepository(Client);
   }
-  public async findByEmail(email: string): Promise<Client | undefined> {
+  public async findByEmail(email: string): Promise<Client | null> {
     const user = await this.ormRepository.findOne({
       where: {
         email,
@@ -16,7 +16,7 @@ export default class ClientRepository implements IClientRepository {
     });
     return user;
   }
-  public async findById(id: string): Promise<Client | undefined> {
+  public async findById(id: string): Promise<Client | null> {
     const user = await this.ormRepository.findOne({
       where: {
         id,
@@ -34,7 +34,7 @@ export default class ClientRepository implements IClientRepository {
     await this.ormRepository.save(user);
     return user;
   }
-  public async save(client: Client): Promise<Client | undefined> {
+  public async save(client: Client): Promise<Client | null> {
     return this.ormRepository.save(client);
   }
 }
