@@ -3,10 +3,10 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { useState } from 'react';
 import { FormContainer, HomeContainer, ButtonForm, InputForm } from './styles';
 import { CustomDropdownColor } from '../../components/Dropdown/index';
-import { ClientForm } from '../../@types/ClientForm';
+import { ClientForm } from '../../typesClient/ClientForm';
 import { ClientTable } from '../../components/ClientViwer/index';
 import { requestClient } from '../../Request/postUser';
-import { Client } from '../../@types/Client';
+import { Client } from '../../typesClient/Client';
 import PersonalToast from '../../components/Toast';
 import alert from '../../assets/alert.svg';
 import { newFormValidationSchema } from '../../utils/zodValidation';
@@ -21,7 +21,6 @@ export function Home() {
   } = useForm({
     resolver: zodResolver(newFormValidationSchema),
   });
-
   async function handleCreateNewClient(data: FieldValues) {
     const clientCreated = await requestClient(data as ClientForm);
     if (clientCreated && clientCreated.id) {

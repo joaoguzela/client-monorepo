@@ -1,16 +1,13 @@
 {
-  "type":"postgres",
+  "type": "postgres",
   "host": "localhost",
-  "port": "",
-  "username":"",
-  "password": "",
-  "database": "client",
-  "migrations":[
-    "./src/typeorm/migrations/*.ts"
-  ],
-  "entities": ["./src/**/typeorm/entities/*.ts"],
-
-  "cli":{
-    "migrationsDir":"./src/typeorm/migrations"
+  "port": "5432",
+  "username": "postgres",
+  "password": "docker",
+  "database": "postgres",
+  "migrations": ["./src/typeorm/migrations/*.ts"],
+  "entities": ["./src/modules/**/typeorm/entities/*.ts"],
+  "cli": {
+    "migrationsDir": "./src/typeorm/migrations"
   }
 }

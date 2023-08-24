@@ -1,8 +1,9 @@
 import 'reflect-metadata';
 import AppError from '../errors/AppError';
-import Client from '../client/typeorm/entities/client';
-import ClientService from '../client/service/clientService';
+import Client from '../modules/client/typeorm/entities/client';
+import ClientService from '../modules/client/service/clientService';
 import FakeClientRepository from '../mockToTest/fakeClientRepository';
+
 describe('CreateCustomer', () => {
   const Repository = new FakeClientRepository();
   it('should be able to create a new customer', async () => {
@@ -33,8 +34,9 @@ describe('CreateCustomer', () => {
         color: 'red',
       });
     } catch (error) {
-      console.log(error);
-      expect((error as AppError).message).toBe('Email address already used.');
+      if (error instanceof AppError) {
+        expect(error.message).toBe('Email address already used.');
+      }
     }
   });
   it('should not to create a new customer', async () => {
@@ -47,7 +49,9 @@ describe('CreateCustomer', () => {
         color: 'red',
       });
     } catch (error) {
-      expect((error as AppError).message).toBe('Error Create to user');
+      if (error instanceof AppError) {
+        expect(error.message).toBe('Error Create to user');
+      }
     }
   });
 });

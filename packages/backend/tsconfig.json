@@ -4,7 +4,7 @@
     "lib": ["es6"],
     "module": "commonjs",
     "rootDir": "src",
-    "baseUrl": "",
+    "baseUrl": "./",
     "moduleResolution": "node",
     "outDir": "build",
     "strict": true,
@@ -17,12 +17,13 @@
     "resolveJsonModule": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
-    "typeRoots": ["@types", "./node_modules/@types"],
+    "types": ["jest", "node"],
+    "typeRoots": ["@types", "../../node_modules/@types"],
     "paths": {
       "@config/*": ["src/config/*"],
       "@modules/*": ["src/modules/*"]
     }
   },
-  "exclude": ["node_modules", "build"],
+  "exclude": ["node_modules", "test", "dist", "**/*spec.ts"],
   "include": ["src/**/*", "src/mockToTest"]
 }

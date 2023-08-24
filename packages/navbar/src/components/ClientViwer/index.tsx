@@ -1,5 +1,5 @@
 import { HistoryContainer, HistoryList } from './styles';
-import { Client } from '../../@types/Client';
+import { Client } from '@types/Client';
 
 export function ClientTable({ id, name, email, color, cpf }: Client) {
   return (

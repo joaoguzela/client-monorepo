@@ -1,5 +1,5 @@
-import { Client } from '../@types/Client';
-import { ClientForm } from '../@types/ClientForm';
+import { Client } from '../typesClient/Client';
+import { ClientForm } from '../typesClient/ClientForm';
 import { HOST_API, TOKEN_API } from '../config';
 import { alertCreate } from '../utils/alert';
 
@@ -16,6 +16,7 @@ export async function requestClient(
     redirect: 'follow',
   };
   try {
+    console.log(body);
     const requestFetch = await fetch(`${HOST_API}`, requestOptions);
     const result = await requestFetch.json();
 
