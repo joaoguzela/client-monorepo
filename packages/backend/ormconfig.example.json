@@ -1,12 +1,11 @@
 {
   "type": "postgres",
-  "host": "localhost",
+  "host": "apiclient-db",
   "port": "5432",
   "username": "postgres",
-  "password": "docker",
-  "database": "postgres",
-  "migrations": ["./src/typeorm/migrations/*.ts"],
-  "entities": ["./src/modules/**/typeorm/entities/*.ts"],
+  "password": "",
+  "database": "client",
+
   "cli": {
     "migrationsDir": "./src/typeorm/migrations"
   }
