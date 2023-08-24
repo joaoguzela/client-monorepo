@@ -1,11 +1,11 @@
 import 'reflect-metadata';
-import express, { NextFunction, Request, Response } from 'express';
+import express from 'express';
 import 'express-async-errors';
 import cors from 'cors';
 import { errors } from 'celebrate';
 import routes from './server.routes';
 import { constructError } from './middleware/constructErrorMiddleware';
-import { NODE_PORT } from './config/config';
+import { NODE_PORT } from '@config/config';
 import './typeorm';
 
 const app = express();

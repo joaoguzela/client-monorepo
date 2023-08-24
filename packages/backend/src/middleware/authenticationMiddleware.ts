@@ -1,7 +1,7 @@
 import { Request, Response, NextFunction } from 'express';
 import AppError from '../errors/AppError';
-import { HttpStatusCode } from '../config/httpStatus';
-import { AUTHENTICATION_TOKEN } from '../config/config';
+import { HttpStatusCode } from '@config/httpStatus';
+import { AUTHENTICATION_TOKEN } from '@config/config';
 
 export const isAuthenticated = (
   request: Request,

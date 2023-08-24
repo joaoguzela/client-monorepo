@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from 'express';
 import AppError from '../errors/AppError';
-import { HttpStatusCode } from '../config/httpStatus';
+import { HttpStatusCode } from '@config/httpStatus';
 
 export const constructError = (
   error: Error,

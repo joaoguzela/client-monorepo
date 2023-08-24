@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from 'express';
-import ClientService from '../service/clientService';
-import { HttpStatusCode } from '../../../config/httpStatus';
+import ClientService from '@modules/client/service/clientService';
+import { HttpStatusCode } from '@config/httpStatus';
 import ClientRepository from '../typeorm/repositories/clientRepository';
 
 export default class ClientController {
