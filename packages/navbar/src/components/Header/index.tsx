@@ -1,6 +1,6 @@
 import { NavLink } from 'react-router-dom';
 import { HeaderContainer } from './styles';
-import logoForm from '../../assets/logoForm.svg';
+import logoForm from '@assets/logoForm.svg';
 
 export function Header() {
   return (

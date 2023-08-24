@@ -1,5 +1,6 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
+import tsconfigPaths from 'vite-tsconfig-paths';
 import path from 'path';
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -8,7 +9,7 @@ export default defineConfig({
   },
   cacheDir: '../../node_modules/.vite',
 
-  plugins: [react()],
+  plugins: [react(), tsconfigPaths()],
   server: {
     host: true,
     strictPort: true,
@@ -16,7 +17,7 @@ export default defineConfig({
   },
   resolve: {
     alias: {
-      '@': path.resolve(__dirname, './src'),
+      '@': path.resolve(__dirname, 'src'),
     },
   },
 });

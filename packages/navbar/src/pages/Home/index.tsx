@@ -2,14 +2,14 @@ import { FieldValues, useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useState } from 'react';
 import { FormContainer, HomeContainer, ButtonForm, InputForm } from './styles';
-import { CustomDropdownColor } from '../../components/Dropdown/index';
-import { ClientForm } from '../../typesClient/ClientForm';
-import { ClientTable } from '../../components/ClientViwer/index';
-import { requestClient } from '../../Request/postUser';
-import { Client } from '../../typesClient/Client';
-import PersonalToast from '../../components/Toast';
-import alert from '../../assets/alert.svg';
-import { newFormValidationSchema } from '../../utils/zodValidation';
+import { CustomDropdownColor } from '@components/Dropdown';
+import { ClientForm } from '@typesClient/ClientForm';
+import { ClientTable } from '@components/ClientViwer';
+import { requestClient } from '@requests/postUser';
+import { Client } from '@typesClient/Client';
+import PersonalToast from '@components/Toast';
+import alert from '@assets/alert.svg';
+import { newFormValidationSchema } from '@utils/zodValidation';
 
 export function Home() {
   const [client, setClient] = useState<Client | undefined>(undefined);
