@@ -1,7 +1,5 @@
 import { z } from 'zod';
-import { mCPF } from './cpfMask';
-
-import { cpfRegex } from '../config';
+import { cpfRegex } from '@config';
 
 export const newFormValidationSchema = z.object({
   name: z.string().min(1, { message: 'Name is required' }),
@@ -16,7 +14,7 @@ export const newFormValidationSchema = z.object({
     .transform(cpf => cpf.trim().replace(/[^0-9]+/g, ''))
     .refine(
       cpf => {
-        if (cpfRegex.test(cpf) && mCPF(cpf).length === 11) {
+        if (cpfRegex.test(cpf) && cpf.length === 11) {
           return true;
         }
 
