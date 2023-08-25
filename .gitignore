@@ -3,7 +3,6 @@ ormconfig.json
 .env
 coverage
 .docker/dbdata
-nginx
 yarn-error.log
 build
 node_modules/
