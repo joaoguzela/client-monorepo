@@ -7,10 +7,14 @@ export default defineConfig({
   define: {
     'process.env': process.env,
   },
-  cacheDir: '../../node_modules/.vite',
+  cacheDir: '../../node_modules/.vite/',
 
   plugins: [react(), tsconfigPaths()],
+
   server: {
+    watch: {
+      usePolling: true,
+    },
     host: true,
     strictPort: true,
     port: 5173,
