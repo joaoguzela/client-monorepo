@@ -14,6 +14,7 @@ describe('CreateCustomer', () => {
       cpf: '12345678900',
       color: 'red',
     });
+
     expect(client).toBeInstanceOf(Client);
   });
 
