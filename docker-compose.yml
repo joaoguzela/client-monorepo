@@ -45,7 +45,7 @@ services:
     networks:
       - frontend
     environment:
-      - HOST_API=http://localhost:3333/clients
+      - HOST_API=http://localhost/clients
       - TOKEN_API=guzela
     depends_on:
       - app
@@ -65,7 +65,6 @@ services:
 
 networks:
   frontend:
-
   backend:
 
 
