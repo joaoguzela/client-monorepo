@@ -7,3 +7,4 @@ coverage
 dist/
 nginx
 build
+yarn.lock

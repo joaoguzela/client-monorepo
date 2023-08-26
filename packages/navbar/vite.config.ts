@@ -7,7 +7,7 @@ export default defineConfig({
   define: {
     'process.env': process.env,
   },
-  cacheDir: '../../node_modules/.vite/',
+  cacheDir: './node_modules/.vite/',
   plugins: [react(), tsconfigPaths()],
 
   server: {
@@ -18,6 +18,7 @@ export default defineConfig({
     strictPort: true,
     port: 5173,
   },
+
   resolve: {
     alias: {
       '@': path.resolve(__dirname, 'src'),
