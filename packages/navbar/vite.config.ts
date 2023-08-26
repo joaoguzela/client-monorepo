@@ -8,7 +8,6 @@ export default defineConfig({
     'process.env': process.env,
   },
   cacheDir: '../../node_modules/.vite/',
-
   plugins: [react(), tsconfigPaths()],
 
   server: {

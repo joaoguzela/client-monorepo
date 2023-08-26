@@ -37,12 +37,13 @@ services:
       context: ./packages/navbar
     links:
       - "app"
+    tty: true
+
     container_name: frontclient-api
     ports:
       - "5173:5173"
     volumes:
       - ./packages/navbar:/front/build
-      - /front/build/node_modules
     networks:
       - frontend
     environment:
