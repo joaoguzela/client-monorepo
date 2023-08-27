@@ -1,22 +1,22 @@
 FROM node:alpine
 
-RUN npm install -g npm@9.8.0
 
 WORKDIR /front/build
 
-COPY package.json ../../
+RUN npm install -g npm@9.8.0
 
-RUN rm -rf node_modules
+COPY package.json ./
 
-RUN yarn install
+RUN rm -rf yarn-error.log
 
-COPY . .
+RUN apk add --no-cache bash
 
+COPY front-command.sh front-command.sh
 
-EXPOSE 5173
+RUN chmod +x front-command.sh
 
+ENTRYPOINT ["./front-command.sh"]
 
-CMD ["yarn", "dev","--force"]
 ENV HOST_API=$HOST_API
 
 ENV TOKEN_API=$TOKEN_API
